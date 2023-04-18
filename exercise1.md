@@ -1,0 +1,9 @@
+We have a hypothetical situation where an application is being worked on by a team of about 6 people. The application is in active development and will be released soon.
+
+Assuming the application is written in Python, some common tools for a CI setup include [Pylint](https://pypi.org/project/pylint/) for linting, [pytest](https://pypi.org/project/pytest/) for testing and [Setuptools](https://pypi.org/project/setuptools/) for building. Pylint is a Python tool for linting that checks for code style and potential errors, while pytest is a testing framework that allows developers to write and run automated tests. Setuptools is a library for packaging Python projects and building distribution files.
+
+For setting up CI there are several alternatives to Jenkins and GitHub Actions. One popular option is [Travis CI](https://www.travis-ci.com/), which is a cloud-based service that integrates well with GitHub. [CircleCI](https://circleci.com/) is another popular cloud-based option that provides a way to run tests and builds. [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) is also worth considering, as it provides a self-hosted solution with powerful automation capabilities.
+
+The decision between a self-hosted or cloud-based environment for the CI setup would depend on various factors. A self-hosted environment would provide more control over the infrastructure and potentially faster build times, but would require more resources and maintenance.
+
+To make a decision, more information is needed about the specific needs of the project, such as the expected traffic and the level of customization required. If the projects technical requirements are not met by the available cloud-based solutions, a self-hosted environment would be a better option. Otherwise, a cloud-based solution would be more cost-effective and easier to maintain for a small team of 6 people.
