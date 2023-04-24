@@ -1,1 +1,1 @@
-web: npm run thiswillfailandrollback
+web: npm run start-prod
