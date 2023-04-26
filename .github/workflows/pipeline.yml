@@ -40,6 +40,24 @@ jobs:
           healthcheck: 'https://full-stack-part-11.herokuapp.com/health'
           checkstring: 'ok'
           rollbackonhealthcheckfailed: true
+      - name: Discord success notification
+        if: ${{ success() && github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip') }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: info
+          description: A new version of Pokedex deployed
+          details: 'to https://full-stack-part-11.herokuapp.com/ by ${{ github.triggering_actor }}'
+          avatarUrl: https://avatars.githubusercontent.com/${{ github.triggering_actor }}
+      - name: Discord failure notification
+        if: ${{ failure() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: error
+          description: Build failed
+          details: 'commit https://github.com/Jeemlei/full-stack-part-11/commit/${{ github.sha }} by ${{ github.triggering_actor }} broke the build :('
+          avatarUrl: https://avatars.githubusercontent.com/${{ github.triggering_actor }}
 
   tag_release:
     needs: simple_deployment_pipeline
